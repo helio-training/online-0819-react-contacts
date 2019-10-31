@@ -1,9 +1,10 @@
 // Production
 const EXCHANGE_URL = "https://api.exchangerate-api.com/v4/latest/USD"
 // const API_URL = "http://herokuapp.com/"
+
 // Development
 // const API_URL = "http://localhost:4000"
-
+const CONTACTS_URL = "https://contacts-express.herokuapp.com/contacts/"
 
 // ---- Data Sets
 const EXCHANGE_STATIC = {
@@ -71,6 +72,7 @@ const RandomName = 'Steve'
 module.exports = {
     EXCHANGE_URL,
     EXCHANGE_STATIC,
+    CONTACTS_URL,
     RandomName
     // API_URL
 }
