@@ -6,7 +6,7 @@ export default () => {
     
     fetch(CONTACTS_URL)
         .then((response) => response.json())
-        .then((body) => body.map(contact => <li>{contact.name}</li>))
+        .then((body) => body.map(contact => <li key={contact._id}>{contact.name}</li>))
         .then(contactArray => setContacts(contactArray))
     return (
         <div>

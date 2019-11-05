@@ -4,7 +4,7 @@ const EXCHANGE_URL = "https://api.exchangerate-api.com/v4/latest/USD"
 
 // Development
 // const API_URL = "http://localhost:4000"
-const CONTACTS_URL = "https://contacts-express.herokuapp.com/contacts/"
+const CONTACTS_URL = "https://contacts-monolith.herokuapp.com/friends/data"
 
 // ---- Data Sets
 const EXCHANGE_STATIC = {
