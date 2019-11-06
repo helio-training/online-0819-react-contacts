@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
-import { CONTACTS_URL } from '../../config'
+import React from 'react'
 
-export default () => {
-    const [contacts, setContacts] = useState([])
+
+export default (props) => {
+    console.log('Rendering ContactList')
     
-    fetch(CONTACTS_URL)
-        .then((response) => response.json())
-        .then((body) => body.map(contact => <li key={contact._id}>{contact.name}</li>))
-        .then(contactArray => setContacts(contactArray))
     return (
         <div>
             Contacts List
-            <ul>
-                {contacts}
-            </ul>
+            <div className="table">
+                {props.data}
+            </div>
         </div>
     )
 }

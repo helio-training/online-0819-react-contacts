@@ -20,6 +20,7 @@ class CreateComponent extends Component {
         })
         const jsonResults = await response.json()
         console.log('Create Contact Result', jsonResults)
+        this.props.dataRefresh()
         this.setState({
             name: '',
             email: '',
@@ -33,6 +34,7 @@ class CreateComponent extends Component {
         })
     }
     render () {
+        console.log('Contact form Rendering')
         return (
             <form 
                 className="form"

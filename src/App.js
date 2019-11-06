@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import ContactList from './components/contacts/ContactList'
-import CreateContact from './components/contacts/CreateContact'
+
 // import { Rates } from './components/exchange/Rates'
+import Contacts  from './components/contacts'
 
 function App() {
-  
+  console.log('Rendering App')
   return (
     <div className="">
       <header className="App-header">
         {/* <Rates/> */}
-        <CreateContact/>
-        <ContactList/>
+        <Contacts/>
       </header>
     </div>
   );
