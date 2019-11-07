@@ -30,9 +30,36 @@
 .tableRow {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .tableRow * {
   margin: 1em;
+}
+
+.red {
+  color: white;
+  background-color: red;
+}
+
+.green {
+  color: white;
+  background-color: green;
+}
+
+.button {
+  width: 7vw;
+  height: 5vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 40vw;
+  margin: auto;
+}
+
+.form * {
+  margin: .2em;
 }

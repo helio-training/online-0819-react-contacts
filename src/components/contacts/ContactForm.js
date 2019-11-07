@@ -1,31 +1,55 @@
 import React, { Component } from 'react'
 import { CONTACTS_URL } from '../../config'
 
-class CreateComponent extends Component {
-    state = {
-        name: '',
-        email: '',
-        phone: ''
+class ContactForm extends Component {
+    constructor(props){
+        super(props)
+        if(props.contact){
+            this.state = {
+                name: props.contact.name,
+                email: props.contact.email,
+                phone: props.contact.phone
+            }
+            this.action = "PUT"
+            this.path = `/${props.id}`
+            this.btnText = 'Update'
+        }else {
+            this.state = {
+                name: '',
+                email: '',
+                phone: ''
+            }
+            this.isCreate = true
+            this.action = "POST"
+            this.path = ""
+            this.btnText = 'Create'
+        }
     }
+    
     submitHandler = async (event) => {
         event.preventDefault()
         const data = {...this.state}
         console.log('submitted state', data)
-        const response = await fetch(CONTACTS_URL, {
-            method: 'POST',
+        const response = await fetch(`${CONTACTS_URL}${this.path}`, {
+            method: this.action,
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         const jsonResults = await response.json()
-        console.log('Create Contact Result', jsonResults)
+        console.log('Contact Form Result', jsonResults)
         this.props.dataRefresh()
-        this.setState({
-            name: '',
-            email: '',
-            phone: ''
-        })
+        if(this.isCreate){
+            this.setState({
+                name: '',
+                email: '',
+                phone: ''
+            })
+        } else{
+            this.props.closeModal()
+        }
+        
     }
     changeHandler = ({target}) => {
         console.log('target', target)
@@ -75,10 +99,10 @@ class CreateComponent extends Component {
                     placeholder='123-456-7890'
                     value={this.state.phone}
                     required />
-                <button>Create Contact</button>
+                <button>{this.btnText} Contact</button>
             </form>
         )
     }
 }
 
-export default CreateComponent
+export default ContactForm

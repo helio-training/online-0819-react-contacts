@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ContactList from './ContactList'
 import { Contact } from './Contact'
-import CreateContact from './CreateContact'
+import ContactForm from './ContactForm'
 
 import { CONTACTS_URL } from '../../config'
 
@@ -11,7 +11,13 @@ export default () => {
     const getContacts = () => {
         fetch(CONTACTS_URL)
             .then((response) => response.json())
-            .then((body) => body.map(contact => <Contact data={contact}/>))
+            .then((body) => body.map(contact => (
+                        <Contact 
+                            data={contact} 
+                            dataRefresh={getContacts}/>
+                    )
+                )
+            )
             .then(contactArray => setContacts(contactArray))
             .then(() => console.log('Fetching contacts'))
     }
@@ -21,7 +27,7 @@ export default () => {
     return (
         <div>
             <p>Hello from /components/contacts/index.js</p>
-            <CreateContact dataRefresh={getContacts}/>
+            <ContactForm dataRefresh={getContacts}/>
             <ContactList data={contacts}/>
         </div>
     )
